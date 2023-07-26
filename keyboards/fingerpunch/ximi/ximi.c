@@ -19,16 +19,24 @@
 // use this matrix if you use the 6 column layout ----------------------------------------------
 
 led_config_t g_led_config = { {
-//COL   00     01      02       03      04      05      06        ROW 
-    {  18,     17,     12,      11,      6,      5,      0    },//00
-    {  19,     16,     13,      10,      7,      4,      1    },//01
-    {  20,     15,     14,       9,      8,      3,      2    },//02
+//COL   00     01      02       03      04      05      06        ROW
+    {  27,     26,     21,      20,      15,      14,      9    },//00
+    {  28,     25,     22,      19,      16,      13,      10    },//01
+    {  29,     24,     23,       18,      17,      12,      11    },//02
     { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED  },//03
-    {  39,     38,     33,      32,     27,     26,     21    },//00
-    {  40,     37,     34,      31,     28,     25,     22    },//01
-    {  41,     36,     35,      30,     29,     24,     23    },//02
+    {  57,     56,     51,      50,     45,     44,     39    },//00
+    {  58,     55,     52,      49,     46,     43,     40    },//01
+    {  59,     54,     53,      48,     47,     42,     41    },//02
     { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED  },//03
 }, {
+    {15, 21},
+    {25, 21},
+    {35, 21},
+    {45, 21},
+    {55, 43},
+    {65, 43},
+    {75, 43},
+    {85, 43},
     // Left
     {93	, 63}, // Thumb reachy
     {77	, 55}, // Thumb homing
@@ -52,6 +60,14 @@ led_config_t g_led_config = { {
     {3	, 19}, // C0 R2
     {0	, 32}, // C0 R3
     // Right
+    {15, 21},
+    {25, 21},
+    {35, 21},
+    {45, 21},
+    {55, 43},
+    {65, 43},
+    {75, 43},
+    {85, 43},
     {129, 63}, // Thumb reachy
     {145, 55}, // Thumb homing
     {161, 50}, // Thumb tucky
@@ -73,8 +89,9 @@ led_config_t g_led_config = { {
     {215, 5},  // C11 R1 (or C0)
     {219, 19}, // C11 R2 (or C0)
     {223, 32}  // C11 R3 (or C0)
-}, {       
-    //LEFT               
+}, {
+    2, 2, 2, 2, 2, 2, 2, 2,
+    //LEFT
     1, 1,  1, // 1, 9,  1, // change to this if you want the thumb home key to be highlighted as a home row key color
     4, 4,  4,
     4, 12, 4,
@@ -83,6 +100,7 @@ led_config_t g_led_config = { {
     4, 12, 4,
     1, 1,  1,
     //RIGHT
+    2, 2, 2, 2, 2, 2, 2, 2,
     1, 1,  1, // 1, 9,  1, // change to this if you want the thumb home key to be highlighted as a home row key color
     4, 4,  4,
     4, 12, 4,
@@ -98,7 +116,7 @@ led_config_t g_led_config = { {
 // use this matrix if you use the 5 column layout ──────────────────────────────────────────┐
 /*
 led_config_t g_led_config = { {
-//COL   00     01   02   03   04   05              ROW 
+//COL   00     01   02   03   04   05              ROW
     { NO_LED,  17,  12,  11,   5,   4          },//00
     { NO_LED,  16,  13,  10,   6,   3          },//01
     { NO_LED,  15,  14,   9,   7,   2          },//02
@@ -122,7 +140,7 @@ led_config_t g_led_config = { {
     { 163,  19 }, { 163,  32 }, { 166,  48 }, { 178,  25 }, { 178,  12 }, { 178,   0 }, { 195,   7 },
    //C3 R2 ▼       C3 R3 ▼       C4 R3 ▼       C4 R2 ▼       C4 R1 ▼       C5 R2 ▼       C5 R3 ▼
     { 194,  20 }, { 193,  33 }, { 206,  42 }, { 209,  30 }, { 211,  17 }
-}, { 
+}, {
     //LEFT
     1, 1, 4, 4, 4, 4,
     4, 4, 1, 4, 4, 4, 4,
