@@ -80,7 +80,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGB_MATRIX_SPLIT { 30, 30 }
     #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 110
     #define RGB_MATRIX_STARTUP_HUE 35
-    #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+    #define RGB_MATRIX_STARTUP_VAL 60
     #define RGB_DISABLE_WHEN_USB_SUSPENDED
     #define RGB_MATRIX_KEYPRESSES
     #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
@@ -160,6 +160,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LOCKING_RESYNC_ENABLE
 
 #ifdef CIRQUE_ENABLE
+    // #define POINTING_DEVICE_DEBUG
+
     // cirque trackpad config
     #define CIRQUE_PINNACLE_ADDR 0x2A
     // Uncomment 2 lines below to switch to relative mode and enable right click
