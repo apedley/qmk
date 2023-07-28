@@ -56,12 +56,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN GP25
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_SPLIT
-    #define RGBLED_SPLIT { 21, 21 }
-    #define RGBLED_NUM 42
+    #define RGBLED_SPLIT { 30, 30 }
+    #define RGBLED_NUM 60
     #define RGBLIGHT_HUE_STEP 16
     #define RGBLIGHT_SAT_STEP 16
     #define RGBLIGHT_VAL_STEP 16
-    #define RGBLIGHT_LIMIT_VAL 130 /* The maximum brightness level for RGBLIGHT_ENABLE */
+    #define RGBLIGHT_LIMIT_VAL 110 /* The maximum brightness level for RGBLIGHT_ENABLE */
     #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
     #define RGBLIGHT_EFFECT_ALTERNATING
     #define RGBLIGHT_EFFECT_BREATHING
@@ -76,9 +76,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGB_MATRIX_ENABLE
     #define SPLIT_TRANSPORT_MIRROR
-    #define RGB_MATRIX_LED_COUNT 42 // Number of LEDs
-    #define RGB_MATRIX_SPLIT { 21, 21 }
-    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 130
+    #define RGB_MATRIX_LED_COUNT 60 // Number of LEDs
+    #define RGB_MATRIX_SPLIT { 30, 30 }
+    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 110
     #define RGB_MATRIX_STARTUP_HUE 35
     #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
     #define RGB_DISABLE_WHEN_USB_SUSPENDED
