@@ -571,7 +571,7 @@ void rgb_matrix_mode_eeprom_helper(uint8_t mode, bool write_to_eeprom) {
     }
     rgb_task_state = STARTING;
     eeconfig_flag_rgb_matrix(write_to_eeprom);
-    dprintf("rgb matrix mode [%s]: %u\n", (write_to_eeprom) ? "EEPROM" : "NOEEPROM", rgb_matrix_config.mode);
+    // dprintf("rgb matrix mode [%s]: %u\n", (write_to_eeprom) ? "EEPROM" : "NOEEPROM", rgb_matrix_config.mode);
 }
 void rgb_matrix_mode_noeeprom(uint8_t mode) {
     rgb_matrix_mode_eeprom_helper(mode, false);
@@ -614,7 +614,7 @@ void rgb_matrix_sethsv_eeprom_helper(uint16_t hue, uint8_t sat, uint8_t val, boo
     rgb_matrix_config.hsv.s = sat;
     rgb_matrix_config.hsv.v = (val > RGB_MATRIX_MAXIMUM_BRIGHTNESS) ? RGB_MATRIX_MAXIMUM_BRIGHTNESS : val;
     eeconfig_flag_rgb_matrix(write_to_eeprom);
-    dprintf("rgb matrix set hsv [%s]: %u,%u,%u\n", (write_to_eeprom) ? "EEPROM" : "NOEEPROM", rgb_matrix_config.hsv.h, rgb_matrix_config.hsv.s, rgb_matrix_config.hsv.v);
+    // dprintf("rgb matrix set hsv [%s]: %u,%u,%u\n", (write_to_eeprom) ? "EEPROM" : "NOEEPROM", rgb_matrix_config.hsv.h, rgb_matrix_config.hsv.s, rgb_matrix_config.hsv.v);
 }
 void rgb_matrix_sethsv_noeeprom(uint16_t hue, uint8_t sat, uint8_t val) {
     rgb_matrix_sethsv_eeprom_helper(hue, sat, val, false);
