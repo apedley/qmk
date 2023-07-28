@@ -15,9 +15,6 @@
 //                    └────────────┘ └────────────┘
 //
 //
-
-// use this matrix if you use the 6 column layout ----------------------------------------------
-
 led_config_t g_led_config = { {
 //COL   00     01      02       03      04      05      06        ROW
     {  27,     26,     21,      20,      15,      14,      9    },//00
@@ -39,6 +36,16 @@ led_config_t g_led_config = { {
     {92, 32},
     {105, 32},
     // Left
+    {0, 32},
+    {13, 32},
+    {26, 32},
+    {40, 32},
+    {53, 32},
+    {66, 32},
+    {79, 32},
+    {92, 32},
+    {105, 32},
+
     {93	, 63}, // Thumb reachy
     {77	, 55}, // Thumb homing
     {61	, 50}, // Thumb tucky
@@ -72,6 +79,16 @@ led_config_t g_led_config = { {
     {211, 32},
     {224, 32},
     // Right
+    {119, 32},
+    {132, 32},
+    {145, 32},
+    {158, 32},
+    {171, 32},
+    {184, 32},
+    {198, 32},
+    {211, 32},
+    {224, 32},
+
     {129, 63}, // Thumb reachy
     {145, 55}, // Thumb homing
     {161, 50}, // Thumb tucky
@@ -94,8 +111,9 @@ led_config_t g_led_config = { {
     {219, 19}, // C11 R2 (or C0)
     {223, 32}  // C11 R3 (or C0)
 }, {
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
     //LEFT
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+
     1, 1,  1, // 1, 9,  1, // change to this if you want the thumb home key to be highlighted as a home row key color
     4, 4,  4,
     4, 12, 4,
@@ -105,6 +123,8 @@ led_config_t g_led_config = { {
     1, 1,  1,
     2, 2, 2, 2, 2, 2, 2, 2, 2,
     //RIGHT
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+
     1, 1,  1, // 1, 9,  1, // change to this if you want the thumb home key to be highlighted as a home row key color
     4, 4,  4,
     4, 12, 4,
@@ -114,6 +134,7 @@ led_config_t g_led_config = { {
     1, 1,  1
 } };
 
+// use this matrix if you use the 6 column layout ----------------------------------------------
 
 // led_config_t g_led_config = { {
 // //COL   00     01      02       03      04      05      06        ROW
@@ -188,7 +209,6 @@ led_config_t g_led_config = { {
 //     4, 12, 4,
 //     1, 1,  1
 // } };
-
 
 // -----------------------------------------------------------------------------------------------
 
