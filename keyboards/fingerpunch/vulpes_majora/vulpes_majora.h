@@ -1,4 +1,4 @@
-/* Copyright 2021 Sadek Baroudi <sadekbaroudi@gmail.com>
+/* Copyright 2023 Sadek Baroudi <sadekbaroudi@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +17,8 @@
 
 #include "quantum.h"
 
-#if defined(KEYBOARD_fingerpunch_pinkiesout_v1)
+#if defined(KEYBOARD_fingerpunch_vulpes_majora_v1)
 #    include "v1.h"
-#elif defined(KEYBOARD_fingerpunch_pinkiesout_v2)
-#    include "v2.h"
-#elif defined(KEYBOARD_fingerpunch_pinkiesout_v2_ext)
-#    include "v2_ext.h"
-#elif defined(KEYBOARD_fingerpunch_pinkiesout_v3)
-#    include "v3.h"
 #endif
 
 #include "keyboards/fingerpunch/src/fp.h"

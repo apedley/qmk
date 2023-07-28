@@ -13,18 +13,4 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#pragma once
-
-#include "quantum.h"
-
-#if defined(KEYBOARD_fingerpunch_pinkiesout_v1)
-#    include "v1.h"
-#elif defined(KEYBOARD_fingerpunch_pinkiesout_v2)
-#    include "v2.h"
-#elif defined(KEYBOARD_fingerpunch_pinkiesout_v2_ext)
-#    include "v2_ext.h"
-#elif defined(KEYBOARD_fingerpunch_pinkiesout_v3)
-#    include "v3.h"
-#endif
-
-#include "keyboards/fingerpunch/src/fp.h"
+#include "vulpes_majora.h"

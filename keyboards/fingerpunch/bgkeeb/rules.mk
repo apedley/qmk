@@ -25,6 +25,13 @@ SPLIT_KEYBOARD = yes
 
 LAYOUTS = split_3x5_3
 
+ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
+        POINTING_DEVICE_ENABLE = yes
+        POINTING_DEVICE_DRIVER = pimoroni_trackball
+        QUANTUM_LIB_SRC += i2c_master.c
+        SRC += drivers/sensors/pimoroni_trackball.c
+endif
+
 DEFERRED_EXEC_ENABLE = yes
 SRC +=  keyboards/fingerpunch/src/fp.c \
         keyboards/fingerpunch/src/fp_haptic.c \

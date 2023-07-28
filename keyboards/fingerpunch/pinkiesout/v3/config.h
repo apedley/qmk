@@ -17,22 +17,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "keyboards/fingerpunch/src/config.h"
+/* key matrix size */
+#define MATRIX_ROWS 9
+#define MATRIX_COLS 8
 
-/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 5
+// SHIFT REGISTER
+// Only needed for matrix_74hc595_spi.c
+#define SHIFTREG_MATRIX_COL_CS GP21
+#define SHIFTREG_DIVISOR 8
+#define MATRIX_ROW_PINS_SR { GP4, GP5, GP6, GP8, GP26, GP11, GP28, GP27, GP7 }
+
+// SPI config for shift register
+#define SPI_DRIVER SPID0
+#define SPI_SCK_PIN GP22
+#define SPI_MOSI_PIN GP23
+#define SPI_MISO_PIN GP20
 
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
+/* encoder config */
+#define ENCODERS_PAD_A {GP1, GP13}
+#define ENCODERS_PAD_B {GP14, GP12}
+#define ENCODER_RESOLUTION 2
+
 #define RGB_DI_PIN GP25
 #ifdef RGBLIGHT_ENABLE
-  // Use twinkle as the default rgb mode for the layers
-  #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
-  // 6 column rgb config
-  #define RGBLED_NUM 42
-  // 5 column rgb config
-  // #define RGBLED_NUM 36
+  #define RGBLED_NUM 66
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
@@ -50,10 +61,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
-  // 6 column rgb config
-  #define RGB_MATRIX_LED_COUNT 42
-  // 5 column rgb config
-  // #define RGB_MATRIX_LED_COUNT 36
+  #define RGB_MATRIX_LED_COUNT 66
   #define RGB_MATRIX_CENTER {100, 32}
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150  /* The maximum brightness level for RGB_MATRIX */
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
@@ -96,8 +104,44 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
 
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
-/* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+#ifdef AUDIO_ENABLE
+    #define AUDIO_VOICES
+    #define AUDIO_PIN GP18
+    #define AUDIO_PWM_DRIVER PWMD1
+    #define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_A
+    // #define AUDIO_PWM_PAL_MODE 42 // only if using AUDIO_DRIVER = pwm_hardware
+    // #define NO_MUSIC_MODE
+    #define AUDIO_ENABLE_TONE_MULTIPLEXING
+    #define AUDIO_TONE_MULTIPLEXING_RATE_DEFAULT 10
+    #define FP_AUDIO_MOUSE_BUTTONS
+    #define FP_AUDIO_CUT_COPY_PASTE
+    #define FP_AUDIO_SAVE
+    #define FP_STARTUP_LIGHT_EXT HALF_NOTE(_E6), HALF_NOTE(_F6), HALF_NOTE(_C6), WHOLE_NOTE(_A5), WHOLE_DOT_NOTE(_F5), WHOLE_DOT_NOTE(_D5), WHOLE_DOT_NOTE(_G5), WHOLE_DOT_NOTE(_C5),
+    #define STARTUP_SONG SONG(FP_STARTUP_LIGHT_EXT)
+    #define DEFAULT_LAYER_SONGS \
+        { SONG(QWERTY_SOUND), SONG(COLEMAK_SOUND) }
+#endif
 
+#ifdef HAPTIC_ENABLE
+    #define FB_ERM_LRA 1
+    #define FB_BRAKEFACTOR 3 // For 1x:0, 2x:1, 3x:2, 4x:3, 6x:4, 8x:5, 16x:6, Disable Braking:7
+    #define FB_LOOPGAIN 1 // For  Low:0, Medium:1, High:2, Very High:3
+    #define RATED_VOLTAGE 2
+    #define V_PEAK 2.8
+    #define V_RMS 2.0
+    #define F_LRA 150 // resonance freq
+    #define DRV_GREETING  alert_750ms
+    #define FP_HAPTIC_MOUSE_BUTTONS
+    #define FP_HAPTIC_CUT_COPY_PASTE
+    #define FP_HAPTIC_SAVE
+#endif
+
+#ifdef CIRQUE_ENABLE
+  // cirque trackpad config
+  #define CIRQUE_PINNACLE_ADDR 0x2A
+  #define POINTING_DEVICE_ROTATION_90
+  #define CIRQUE_PINNACLE_TAP_ENABLE
+  #define POINTING_DEVICE_TASK_THROTTLE_MS 5
+  #define I2C1_CLOCK_SPEED  400000
+  #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
+#endif

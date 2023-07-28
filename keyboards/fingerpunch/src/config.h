@@ -5,4 +5,3 @@
 #define PMW33XX_CPI 1000
 #endif
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 6

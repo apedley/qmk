@@ -34,19 +34,20 @@
 
 // -------------------- Encoder config ------------------------
 
-// For reference, layer numbers are defined in sadekbaroudi.h
-
-#define FP_ENC_0_LAYER_VOLUME         0 // default - base layer
-#define FP_ENC_0_LAYER_PGUP_PGDN      1
-#define FP_ENC_0_LAYER_ZOOM           2
-#define FP_ENC_0_LAYER_DPI_POINTING   3
-#define FP_ENC_0_LAYER_SUPER_TAB      4 // right - homing thumb layer
-#define FP_ENC_0_LAYER_SUPER_CTRL_TAB 6
-#define FP_ENC_0_LAYER_SCROLL_WHEEL   7
-#define FP_ENC_0_LAYER_RGB_MODE       5 // right - reachy thumb layer
-#define FP_ENC_0_LAYER_RGB_HUE        8
-#define FP_ENC_0_LAYER_RGB_SAT        9
-#define FP_ENC_0_LAYER_RGB_VAL        10
+// Override encoder settings for all keyboards except vulpes majora
+#if !defined(KEYBOARD_fingerpunch_vulpes_majora_v1)
+    #define FP_ENC_0_LAYER_VOLUME         0 // default - base layer
+    #define FP_ENC_0_LAYER_PGUP_PGDN      1
+    #define FP_ENC_0_LAYER_ZOOM           2
+    #define FP_ENC_0_LAYER_DPI_POINTING   3
+    #define FP_ENC_0_LAYER_SUPER_TAB      4 // right - homing thumb layer
+    #define FP_ENC_0_LAYER_SUPER_CTRL_TAB 6
+    #define FP_ENC_0_LAYER_SCROLL_WHEEL   7
+    #define FP_ENC_0_LAYER_RGB_MODE       5 // right - reachy thumb layer
+    #define FP_ENC_0_LAYER_RGB_HUE        8
+    #define FP_ENC_0_LAYER_RGB_SAT        9
+    #define FP_ENC_0_LAYER_RGB_VAL        10
+#endif
 
 // override the default for the scroll wheel encoder on the vulpes minora
 #if defined(KEYBOARD_fingerpunch_vulpes_minora) && defined(FP_VIK_PERS60_MODULE)
@@ -110,10 +111,18 @@
 
 // -------------------- Lighting config ------------------------
 
-#define FP_LAYER_LIGHTING_HUE_2 FP_HSV_MINT
-#define FP_LAYER_LIGHTING_HUE_3 FP_HSV_LAVENDER
-#define FP_LAYER_LIGHTING_HUE_4 FP_HSV_LEMON
-#define FP_LAYER_LIGHTING_HUE_5 FP_HSV_MELON
+// We override vulpes majora with the rgb lighting on the center trackball in the center, else config below for all other boards
+#if defined(KEYBOARD_fingerpunch_vulpes_majora_v1) && defined(FP_VM_RGB_VIK_ONLY)
+    #define FP_LAYER_LIGHTING_HUE_2 HSV_GREEN
+    #define FP_LAYER_LIGHTING_HUE_3 HSV_PURPLE
+    #define FP_LAYER_LIGHTING_HUE_4 HSV_YELLOW
+    #define FP_LAYER_LIGHTING_HUE_5 HSV_PINK
+#else
+    #define FP_LAYER_LIGHTING_HUE_2 FP_HSV_MINT
+    #define FP_LAYER_LIGHTING_HUE_3 FP_HSV_LAVENDER
+    #define FP_LAYER_LIGHTING_HUE_4 FP_HSV_LEMON
+    #define FP_LAYER_LIGHTING_HUE_5 FP_HSV_MELON
+#endif
 
 // These are the colors I used on my ffkb low pro ks-27 with the xvx horizon purple and green keycaps
 // #define FP_LAYER_LIGHTING_HUE_2 HSV_GREEN

@@ -166,9 +166,14 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_kong
 #endif
 
-// Since kong uses the name LAYOUT_kong instead of LAYOUT
+// Since LAYOUT_vulpes_minora uses the name LAYOUT_vulpes_minora instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_vulpes_minora))
 #    define LAYOUT LAYOUT_vulpes_minora
+#endif
+
+// Since LAYOUT_vulpes_majora uses the name LAYOUT_vulpes_majora instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_vulpes_majora))
+#    define LAYOUT LAYOUT_vulpes_majora
 #endif
 
 // clang-format off

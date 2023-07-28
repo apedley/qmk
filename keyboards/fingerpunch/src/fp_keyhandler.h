@@ -21,7 +21,7 @@
 #ifndef FP_DISABLE_CUSTOM_KEYCODES
 enum fp_keycodes {
 #   ifdef VIAL_ENABLE
-    FP_SCROLL_TOG = USER00,
+    FP_SCROLL_TOG = QK_KB,
 #   else
     FP_SCROLL_TOG = SAFE_RANGE,
 #   endif // VIA_ENABLE

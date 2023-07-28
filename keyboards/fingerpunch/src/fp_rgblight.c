@@ -21,7 +21,11 @@
 
 void fp_rgb_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode) {
     xprintf("fp_rgb_set_hsv_and_mode: hue: %d, sat: %d, val: %d, mode: %d\n", hue, sat, val, mode);
+    #ifdef RGBLIGHT_LAYERS_RETAIN_VAL
+    rgblight_sethsv_noeeprom(hue, sat, fp_config.rgb_val);
+    #else
     rgblight_sethsv_noeeprom(hue, sat, val);
+    #endif
     rgblight_mode_noeeprom(mode);
 }
 

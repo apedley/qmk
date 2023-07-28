@@ -19,12 +19,15 @@
     || defined(KEYBOARD_fingerpunch_luakeeb) \
     || defined(KEYBOARD_fingerpunch_pinkiesout_v1) \
     || defined(KEYBOARD_fingerpunch_pinkiesout_v2) \
+    || defined(KEYBOARD_fingerpunch_pinkiesout_v2_ext) \
+    || defined(KEYBOARD_fingerpunch_pinkiesout_v3) \
     || defined(KEYBOARD_fingerpunch_rockon_v1) \
     || defined(KEYBOARD_fingerpunch_rockon_v2) \
     || defined(KEYBOARD_fingerpunch_rockon_v3) \
     || defined(KEYBOARD_fingerpunch_rockon_bp) \
     || defined(KEYBOARD_fingerpunch_sweeeeep) \
     || defined(KEYBOARD_fingerpunch_vulpes_minora) \
+    || defined(KEYBOARD_fingerpunch_vulpes_majora_v1) \
     || defined(KEYBOARD_fingerpunch_ximi) \
     || defined(KEYBOARD_fingerpunch_personal_badwings) \
     || defined(KEYBOARD_fingerpunch_personal_klor) \
