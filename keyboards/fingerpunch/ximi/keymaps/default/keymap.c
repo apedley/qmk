@@ -41,8 +41,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,       KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,         KC_Y,    KC_U,         KC_I,         KC_O,         KC_P,            KC_BSLS,
   KC_TAB,       LCTL_T(KC_A), LGUI_T(KC_S), LALT_T(KC_D), LSFT_T(KC_F), KC_G,         KC_H,    RSFT_T(KC_J), RALT_T(KC_K), RGUI_T(KC_L), RCTL_T(KC_SCLN), KC_QUOT,
   KC_LSFT,      KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,         KC_N,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,         KC_RCTL,
-                KC_MUTE,                    LOWER,        KC_ENT,       KC_DEL,       KC_BSPC, KC_SPC,       RAISE,                      KC_MUTE,
-                                            KC_MS_BTN3,   KC_MS_BTN1,   KC_MS_BTN2,   KC_VOLD, KC_MUTE,      KC_VOLU
+                QK_BOOT,                    LOWER,          QK_RBT,     EE_CLR,       KC_RALT,  KC_ENT, RAISE,          KC_MUTE,
+                // KC_MUTE,                    LOWER,        KC_ENT,       KC_DEL,       KC_BSPC, KC_SPC,       RAISE,                      KC_MUTE,
+                                            RGB_VAD, RGB_MOD, RGB_VAI,        KC_BTN1, KC_BTN3, KC_BTN2
 ),
 
 /* Colemak
