@@ -189,7 +189,7 @@ void fp_apply_dpi_defaults(void) {
     if (FP_POINTING_COMBINED_SNIPING_RIGHT) {
         right_mode = FP_SNIPING_MODE;
     }
-    
+
     fp_set_cpi_combined_by_mode(left_mode, right_mode);
 #else
     fp_set_cpi_by_mode(FP_POINTING_MODE);
@@ -286,6 +286,13 @@ uint32_t fp_zoom_unset_hold(uint32_t triger_time, void *cb_arg) {
     zooming_hold = false;
     return 0;
 }
+// Modify these values to adjust the scrolling speed
+#define SCROLL_DIVISOR_H 8.0
+#define SCROLL_DIVISOR_V 8.0
+
+float scroll_accumulated_h = 0;
+float scroll_accumulated_v = 0;
+
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
 #ifdef CONSOLE_ENABLE
@@ -297,8 +304,21 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     }
 #endif
     if (fp_scroll_layer_get() || fp_scroll_keycode_get()) {
-        mouse_report.h = mouse_report.x;
-        mouse_report.v = -mouse_report.y;
+        // mouse_report.h = mouse_report.x;
+        // mouse_report.v = -mouse_report.y;
+        // mouse_report.x = 0;
+        // mouse_report.y = 0;
+        scroll_accumulated_h += (float)mouse_report.x / SCROLL_DIVISOR_H;
+        scroll_accumulated_v += (float)mouse_report.y / SCROLL_DIVISOR_V;
+        // Assign integer parts of accumulated scroll values to the mouse report
+        mouse_report.h = (int8_t)scroll_accumulated_h;
+        mouse_report.v = (int8_t)scroll_accumulated_v;
+
+        // Update accumulated scroll values by subtracting the integer parts
+        scroll_accumulated_h -= (int8_t)scroll_accumulated_h;
+        scroll_accumulated_v -= (int8_t)scroll_accumulated_v;
+
+        // Clear the X and Y values of the mouse report
         mouse_report.x = 0;
         mouse_report.y = 0;
     } else if (fp_zoom_layer_get() || fp_zoom_keycode_get()) {
@@ -357,6 +377,15 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
 }
 
 #ifdef POINTING_DEVICE_COMBINED
+
+
+// Variables to store accumulated scroll values
+float scroll_accumulated_left_h = 0;
+float scroll_accumulated_left_v = 0;
+float scroll_accumulated_right_h = 0;
+float scroll_accumulated_right_v = 0;
+
+
 report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, report_mouse_t right_report) {
     // if we have any modes activated, we should process each report first
     if (fp_scroll_layer_get() || fp_scroll_keycode_get() || fp_zoom_layer_get() || fp_zoom_keycode_get()) {
@@ -364,15 +393,45 @@ report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, repo
         right_report = pointing_device_task_kb(right_report);
     } else {
         if (FP_POINTING_COMBINED_SCROLLING_LEFT) {
-            left_report.h = left_report.x;
-            left_report.v = -left_report.y;
+            // left_report.h = left_report.x;
+            // left_report.v = -left_report.y;
+            // left_report.x = 0;
+            // left_report.y = 0;
+
+            scroll_accumulated_left_h += (float)left_report.x / SCROLL_DIVISOR_H;
+            scroll_accumulated_left_v += -(float)left_report.y / SCROLL_DIVISOR_V;
+
+            // Assign integer parts of accumulated scroll values to the mouse report
+            left_report.h = (int8_t)scroll_accumulated_left_h;
+            left_report.v = (int8_t)scroll_accumulated_left_v;
+
+            // Update accumulated scroll values by subtracting the integer parts
+            scroll_accumulated_left_h -= (int8_t)scroll_accumulated_left_h;
+            scroll_accumulated_left_v -= (int8_t)scroll_accumulated_left_v;
+
+            // Clear the X and Y values of the mouse report
             left_report.x = 0;
             left_report.y = 0;
         }
 
         if (FP_POINTING_COMBINED_SCROLLING_RIGHT) {
-            right_report.h = right_report.x;
-            right_report.v = -right_report.y;
+            // right_report.h = right_report.x;
+            // right_report.v = -right_report.y;
+            // right_report.x = 0;
+            // right_report.y = 0;
+
+            scroll_accumulated_right_h += (float)right_report.x / SCROLL_DIVISOR_H;
+            scroll_accumulated_right_v += (float)right_report.y / SCROLL_DIVISOR_V;
+
+            // Assign integer parts of accumulated scroll values to the mouse report
+            right_report.h = (int8_t)scroll_accumulated_right_h;
+            right_report.v = (int8_t)scroll_accumulated_right_v;
+
+            // Update accumulated scroll values by subtracting the integer parts
+            scroll_accumulated_right_h -= (int8_t)scroll_accumulated_right_h;
+            scroll_accumulated_right_v -= (int8_t)scroll_accumulated_right_v;
+
+            // Clear the X and Y values of the mouse report
             right_report.x = 0;
             right_report.y = 0;
         }
@@ -381,6 +440,27 @@ report_mouse_t pointing_device_task_combined_kb(report_mouse_t left_report, repo
     return pointing_device_task_combined_user(left_report, right_report);
 }
 #endif
+
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+
+bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
+    switch(keycode) {
+    case FP_SCROLL_DPI_UP:
+    case FP_SCROLL_DPI_DN:
+    case FP_SCROLL_DPI_RESET:
+    case FP_SNIPE_DPI_UP:
+    case FP_SNIPE_DPI_DN:
+    case FP_SNIPE_DPI_RESET:
+        return true;
+    default:
+        return false;
+    }
+    return  is_mouse_record_user(keycode, record);
+
+}
+
+#endif
+
 
 layer_state_t fp_layer_state_set_pointing(layer_state_t state) {
     switch (get_highest_layer(state)) {
