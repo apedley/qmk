@@ -78,7 +78,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define SPLIT_TRANSPORT_MIRROR
     #define RGB_MATRIX_LED_COUNT 60 // Number of LEDs
     #define RGB_MATRIX_SPLIT { 30, 30 }
-    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 90
+    #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 135
     #define RGB_MATRIX_STARTUP_HUE 35
     #define RGB_MATRIX_STARTUP_VAL 60
     #define RGB_DISABLE_WHEN_USB_SUSPENDED

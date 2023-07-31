@@ -92,6 +92,14 @@ led_config_t g_led_config = { {
     {219, 19}, // C11 R2 (or C0)
     {223, 32}  // C11 R3 (or C0)
 }, {
+
+    // LED_FLAG_NONE	    0x00	If this LED has no flags
+    // LED_FLAG_ALL	        0xFF	If this LED has all flags
+    // LED_FLAG_MODIFIER	0x01	If the LED is on a modifier key
+    // LED_FLAG_UNDERGLOW	0x02	If the LED is for underglow
+    // LED_FLAG_KEYLIGHT	0x04	If the LED is for key backlight
+    // LED_FLAG_INDICATOR	0x08	If the LED is for keyboard state indication
+
     //LEFT
     2, 2, 2, 2, 2, 2, 2, 2, 2,
 
